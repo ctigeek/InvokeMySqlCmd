@@ -23,7 +23,12 @@ Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet 
 	-Server The name of the server to connect to. This translates to "Data Source" in the connection string. Default is "localhost".
 
 ex:
-Invoke-MySqlcmd 
+Invoke-MySqlcmd -username myname -password mypass -query "select * from myschema.mytable limit 5;"
+
+Invoke-MySqlcmd -username myname -password mypass -scalar -query "select someColumn from myschema.mytable limit 1;"
+
+Invoke-MySqlcmd -username myname -password mypass -NonQuery -query "update myschema.mytable set someColumn='blah' where id=3;"
+
 	
 ## What's returned
 	* For normal select queries, an array of System.Data.DataRow. If the query doesn't return anything, that will be an array with 0 elements.
