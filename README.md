@@ -11,7 +11,7 @@ Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet 
 
 ## Command Parameters
 
-* `-Query`  The SQL query to run. This is required unless InputFile is included. ~~If you are piping anything into this cmdlet, it will go into the Query parameter.~~ <-- coming soon.
+* `-Query`  The SQL query to run. This is required unless InputFile is included. If you are piping a string into this cmdlet, it will go into the Query parameter.
 * `-Username` (required) The MySql username to use.
 * `-Password` (required) The MySql password for the user.
 * `-QueryTimeout` The timeout for the sql command. Default is 30 seconds.
@@ -27,6 +27,8 @@ ex:
 * `Invoke-MySqlcmd -username myname -password mypass -scalar -query "select someColumn from myschema.mytable limit 1;"`
 
 * `Invoke-MySqlcmd -username myname -password mypass -NonQuery -query "update myschema.mytable set someColumn='blah' where id=3;"`
+
+* `"select * from myschema.mytable limit 5;" | Invoke-MySqlcmd -username myname -password mypass`
 
 	
 ## What's returned
