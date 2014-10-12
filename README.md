@@ -5,13 +5,13 @@ Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet 
 
 ## How to install
 1. Download the dlls from the [latest release](https://github.com/ctigeek/InvokeMySqlCmd/releases/), or build it yourself from source.
-2. Copy the dlls to one of the defined paths in the PSModulePath environment variable "$env:PSModulePath".
-	See also [this msdn article on the subject.](http://msdn.microsoft.com/en-us/library/dd878350)
-3. Import the module by running "Import-Module InvokeMySqlcmd" in your powershell script. I'm sure there's a way to register the module permanently.
+2. Copy the dlls to one of the defined paths in the PSModulePath environment variable: `$env:PSModulePath`.
+	See also [this msdn article](http://msdn.microsoft.com/en-us/library/dd878350) to make sure you have your directory structure correct.
+3. Import the module by running "Import-Module InvokeMySqlcmd" in your powershell script. If that doesn't work, then you don't have the DLLs in the correct directory.
 
-## Parameters
+## Command Parameters
 
-* `-Query`  The query to run. This is required unless InputFile is included. If you are piping anything into this cmdlet, it will go into the Query parameter.
+* `-Query`  The SQL query to run. This is required unless InputFile is included. ~~If you are piping anything into this cmdlet, it will go into the Query parameter.~~ <-- coming soon.
 * `-Username` (required) The MySql username to use.
 * `-Password` (required) The MySql password for the user.
 * `-QueryTimeout` The timeout for the sql command. Default is 30 seconds.
