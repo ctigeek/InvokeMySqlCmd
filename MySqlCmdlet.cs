@@ -14,35 +14,36 @@ namespace InvokeMySqlCmd
             QueryTimeout = 30;
         }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public string Query { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Username { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         public string Password { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public int QueryTimeout { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string InputFile { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Scalar { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public SwitchParameter NonQuery { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Database { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Server { get; set; }
 
-        protected override void BeginProcessing()
+        protected override void ProcessRecord()
         {
+            //TODO: replace this with parameter sets and attribute validation.
             if (!string.IsNullOrEmpty(Query) && !string.IsNullOrEmpty(InputFile))
             {
                 throw new ArgumentException("You cannot specify both Query and InputFile.");
@@ -52,11 +53,7 @@ namespace InvokeMySqlCmd
                 throw new ArgumentException("You must specify a Query or an InputFile containing a valid query to run.");
             }
             WriteDebug("Input validated.");
-            base.BeginProcessing();
-        }
 
-        protected override void ProcessRecord()
-        {
             using (var connection = new MySqlConnection(CreateConnectionString()))
             {
                 connection.Open();
