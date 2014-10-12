@@ -31,5 +31,5 @@ ex:
 	
 ## What's returned
 * For normal select queries, an array of System.Data.DataRow. If the query doesn't return anything, that will be an array with 0 elements.
-* If you include the Scalar switch, it will be the datatype of the first column of the first row returned.
+* If you include the Scalar switch, it will be the value in the first column of the first row returned.
 * If you include the NonQuery switch, it will return the number of rows affected by the query.
