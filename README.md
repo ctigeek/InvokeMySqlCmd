@@ -9,9 +9,8 @@ Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet 
 	See also [this msdn article on the subject.](http://msdn.microsoft.com/en-us/library/dd878350)
 3. Import the module by running "Import-Module InvokeMySqlcmd" in your powershell script. I'm sure there's a way to register the module permanently.
 
-## How to use
-1. Make sure you call "Import-Module InvokeMySqlCmd" in each script that uses it.
-2. Call the cmdlet with the correct parameters:
+## Parameters
+
 * -Query  The query to run. This is required unless InputFile is included. If you are piping anything into this cmdlet, it will go into the Query parameter.
 * -Username (required) The MySql username to use.
 * -Password (required) The MySql password for the user.
@@ -23,11 +22,11 @@ Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet 
 * -Server The name of the server to connect to. This translates to "Data Source" in the connection string. Default is "localhost".
 
 ex:
-* Invoke-MySqlcmd -username myname -password mypass -query "select * from myschema.mytable limit 5;"
+* `Invoke-MySqlcmd -username myname -password mypass -query "select * from myschema.mytable limit 5;"`
 
-* Invoke-MySqlcmd -username myname -password mypass -scalar -query "select someColumn from myschema.mytable limit 1;"
+* `Invoke-MySqlcmd -username myname -password mypass -scalar -query "select someColumn from myschema.mytable limit 1;"`
 
-* Invoke-MySqlcmd -username myname -password mypass -NonQuery -query "update myschema.mytable set someColumn='blah' where id=3;"
+* `Invoke-MySqlcmd -username myname -password mypass -NonQuery -query "update myschema.mytable set someColumn='blah' where id=3;"`
 
 	
 ## What's returned
