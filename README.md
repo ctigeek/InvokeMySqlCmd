@@ -1,6 +1,15 @@
 InvokeMySqlCmd
 ==============
 
+# STOP!!!!!!!!!
+This repo is no longer maintained.
+There is a new module that contains this same functionality.
+It will (usually) contain the latest MySql drivers.
+
+https://github.com/ctigeek/InvokeQueryPowershellModule
+
+
+
 Powershell Cmdlet for MySql with similar functionality to the Sql Server cmdlet Invoke-SqlCmd.
 
 ## How to install
